@@ -1,21 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\projects\\microservice\\BusinessApi\\BusinessApi.csproj": {}
+    "D:\\Workspace\\Projects\\microservice\\BusinessApi\\BusinessApi.csproj": {}
   },
   "projects": {
-    "C:\\projects\\microservice\\BusinessApi\\BusinessApi.csproj": {
+    "D:\\Workspace\\Projects\\microservice\\BusinessApi\\BusinessApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projects\\microservice\\BusinessApi\\BusinessApi.csproj",
+        "projectUniqueName": "D:\\Workspace\\Projects\\microservice\\BusinessApi\\BusinessApi.csproj",
         "projectName": "BusinessApi",
-        "projectPath": "C:\\projects\\microservice\\BusinessApi\\BusinessApi.csproj",
-        "packagesPath": "C:\\Users\\jamester.c.go\\.nuget\\packages\\",
-        "outputPath": "C:\\projects\\microservice\\BusinessApi\\obj\\",
+        "projectPath": "D:\\Workspace\\Projects\\microservice\\BusinessApi\\BusinessApi.csproj",
+        "packagesPath": "C:\\Users\\Msi\\.nuget\\packages\\",
+        "outputPath": "D:\\Workspace\\Projects\\microservice\\BusinessApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\jamester.c.go\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Msi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -66,6 +71,10 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -90,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
