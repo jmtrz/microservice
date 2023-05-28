@@ -1,34 +1,34 @@
 using BusinessApi.Models;
 
-namespace BusinessApi.interfaces;
+namespace BusinessApi.Interfaces;
 
 public interface IInventory
 {
     //Products
-    Task<IEnumerable<Product>> GetProducts();
-    Task<Product> GetProductById();
+    IEnumerable<Product> GetProducts();
+    Product GetProductById(int id);
     Task<int> AddProduct(Product product);
     Task<int> UpdateProduct(Product product);
     Task<int> DeleteProduct(int id);
 
     //Inventory
-    Task<IEnumerable<InventoryItem>> GetInventoryItems();
-    Task<InventoryItem> GetInventoryItemById();
-    Task<int> AddInventoryItem();
-    Task<int> UpdateInventoryItem();
-    Task<int> DeleteInventoryItem();
+    IEnumerable<InventoryItem> GetInventoryItems();
+    InventoryItem GetInventoryItemById(int id);
+    void AddInventoryItem(InventoryItem item);
+    Task<int> UpdateInventoryItem(InventoryItem item);
+    Task<int> DeleteInventoryItem(int id);
 
     //Orders
-    Task<IEnumerable<Order>> GetOrders();
-    Task<Order> GetOrderById(int id);
+    IEnumerable<Order> GetOrders();
+    Order GetOrderById(int id);
     Task<int> AddOrder(Order order);
     Task<int> UpdateOrder(Order order);
     Task<int> DeleteOrder(int id);
 
     //OrderItems
-    Task<IEnumerable<OrderItem>> GetOrderItems();
-    Task<OrderItem> GetOrderItemById();
-    Task<int> AddOrderItem();
-    Task<int> UpdateOrderItem();
-    Task<int> DeleteOrderItem();
+    IEnumerable<OrderItem> GetOrderItems();
+    OrderItem GetOrderItemById(int id);
+    Task<int> AddOrderItem(OrderItem orderItem);
+    Task<int> UpdateOrderItem(OrderItem orderItem);
+    Task<int> DeleteOrderItem(int id);
 }

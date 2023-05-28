@@ -10,8 +10,8 @@ public class InventoryDbContext : DbContext
         
     }
 
-    public DbSet<Product> ProductsContext { get; set; }
-    public DbSet<OrderItem> OrderItemsContext { get; set; }
-    public DbSet<Order> OrdersContext { get; set; }
-    public DbSet<InventoryItem> InventoryContext { get; set; }
+    public DbSet<Product>? ProductsContext { get; set; }
+    public DbSet<OrderItem>? OrderItemsContext { get; set; }
+    public DbSet<Order>? OrdersContext { get; set; }
+    public DbSet<InventoryItem>? InventoryContext { get; set; }
 }

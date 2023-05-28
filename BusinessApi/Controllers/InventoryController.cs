@@ -25,4 +25,11 @@ public class InventoryController : ControllerBase
 
         return Ok(products);
     }
+
+    [HttpPost]
+    public ActionResult AddProduct([FromBody] Product product)
+    {
+        
+        return Ok();
+    }
 }
