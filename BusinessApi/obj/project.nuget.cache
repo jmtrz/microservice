@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g4asq1SxGe7Zunaf0WsDBl7UsMBlRmQMz239nTqRjxc1m90nAKWoTUlhG1BWnfZn+Y7fs27onjvtoGhEMuNrRA==",
+  "dgSpecHash": "eEZCy3KeP0U15IU8tIt6ePaEq06tXS6gF+D/J62orHNGS38hKD+5v0piTrKV+RiFBQFWZZ1TVsrve4cnmDheFg==",
   "success": true,
-  "projectFilePath": "D:\\Workspace\\Projects\\microservice\\BusinessApi\\BusinessApi.csproj",
+  "projectFilePath": "D:\\Workspace\\AllAboutDotNet\\microservice\\BusinessApi\\BusinessApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Msi\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Msi\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

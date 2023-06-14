@@ -1,3 +1,4 @@
+using BusinessApi.Interfaces;
 using BusinessApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,24 +8,15 @@ namespace BusinessApi.Controllers;
 [Route("[controller]")]
 public class InventoryController : ControllerBase
 {
-    public InventoryController()
+    private readonly IInventory _Inventory;
+
+    public InventoryController(IInventory Inventory)
     {
-        
+        _Inventory = Inventory;
     }
 
     [HttpGet]
-    public ActionResult GetProducts()
-    {
-        var products = new Product() {
-            Id = 1,
-            Description = "sample data",
-            Name = "Apple Pie",
-            CreatedAt = new DateTime(),
-            SKU = "Something"
-        };
-
-        return Ok(products);
-    }
+    public ActionResult GetProducts() => Ok(_Inventory.GetProducts());
 
     [HttpPost]
     public ActionResult AddProduct([FromBody] Product product)

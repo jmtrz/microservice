@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Workspace\\Projects\\microservice\\BusinessApi\\BusinessApi.csproj": {}
+    "D:\\Workspace\\AllAboutDotNet\\microservice\\BusinessApi\\BusinessApi.csproj": {}
   },
   "projects": {
-    "D:\\Workspace\\Projects\\microservice\\BusinessApi\\BusinessApi.csproj": {
+    "D:\\Workspace\\AllAboutDotNet\\microservice\\BusinessApi\\BusinessApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Workspace\\Projects\\microservice\\BusinessApi\\BusinessApi.csproj",
+        "projectUniqueName": "D:\\Workspace\\AllAboutDotNet\\microservice\\BusinessApi\\BusinessApi.csproj",
         "projectName": "BusinessApi",
-        "projectPath": "D:\\Workspace\\Projects\\microservice\\BusinessApi\\BusinessApi.csproj",
+        "projectPath": "D:\\Workspace\\AllAboutDotNet\\microservice\\BusinessApi\\BusinessApi.csproj",
         "packagesPath": "C:\\Users\\Msi\\.nuget\\packages\\",
-        "outputPath": "D:\\Workspace\\Projects\\microservice\\BusinessApi\\obj\\",
+        "outputPath": "D:\\Workspace\\AllAboutDotNet\\microservice\\BusinessApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
