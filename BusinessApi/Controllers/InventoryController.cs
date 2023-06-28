@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BusinessApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/inventory")]
 public class InventoryController : ControllerBase
 {
     private readonly IInventory _Inventory;
@@ -16,12 +16,29 @@ public class InventoryController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult GetProducts() => Ok(_Inventory.GetProducts());
+    public ActionResult GetInventoryItems() => Ok(_Inventory.GetInventoryItems());
+
+    [HttpGet("{id}")]
+    public ActionResult GetInventoryItemById(string id) => Ok(_Inventory.GetInventoryItemById(id));
 
     [HttpPost]
-    public ActionResult AddProduct([FromBody] Product product)
+    public ActionResult AddInventoryItem([FromBody] InventoryItem inventoryItem)
     {
+        _Inventory.AddInventoryItem(inventoryItem);
+        return Ok("Inventory Added Successfully");
+    }
+
+    [HttpPut]
+    public ActionResult UpdateProduct([FromBody] InventoryItem inventoryItem)
+    {
+        _Inventory.UpdateInventoryItem(inventoryItem);
         
+        return Ok("Inventory Updated Successfully");
+    }
+
+    [HttpDelete("{id}")]
+    public ActionResult DeleteProduct(string id)
+    {
         return Ok();
     }
 }

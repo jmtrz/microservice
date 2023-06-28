@@ -6,17 +6,17 @@ public interface IInventory
 {
     //Products
     IEnumerable<Product> GetProducts();
-    Product GetProductById(int id);
+    Product GetProductById(string id);
     Task<int> AddProduct(Product product);
     Task<int> UpdateProduct(Product product);
-    Task<int> DeleteProduct(int id);
+    Task<int> DeleteProduct(string id);
 
     //Inventory
     IEnumerable<InventoryItem> GetInventoryItems();
-    InventoryItem GetInventoryItemById(int id);
+    InventoryItem GetInventoryItemById(string id);
     void AddInventoryItem(InventoryItem item);
     Task<int> UpdateInventoryItem(InventoryItem item);
-    Task<int> DeleteInventoryItem(int id);
+    Task<int> DeleteInventoryItem(string id);
 
     //Orders
     IEnumerable<Order> GetOrders();
