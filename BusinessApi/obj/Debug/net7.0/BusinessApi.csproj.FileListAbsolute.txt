@@ -399,3 +399,4 @@ F:\workspaces\dotnet_projects\microservice\BusinessApi\obj\Debug\net7.0\Business
 F:\workspaces\dotnet_projects\microservice\BusinessApi\obj\Debug\net7.0\BusinessApi.genruntimeconfig.cache
 F:\workspaces\dotnet_projects\microservice\BusinessApi\obj\Debug\net7.0\ref\BusinessApi.dll
 F:\workspaces\dotnet_projects\microservice\BusinessApi\bin\Debug\net7.0\StronglyTypedIds.Attributes.dll
+D:\Workspace\AllAboutDotNet\microservice\BusinessApi\bin\Debug\net7.0\StronglyTypedIds.Attributes.dll
