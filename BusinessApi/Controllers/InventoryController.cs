@@ -37,7 +37,7 @@ public class InventoryController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public ActionResult DeleteProduct(string id)
+    public ActionResult DeleteProduct([FromQuery] string id)
     {
         return Ok();
     }
