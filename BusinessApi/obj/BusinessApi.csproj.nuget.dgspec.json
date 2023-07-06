@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "f:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\BusinessApi.csproj": {}
+    "F:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\BusinessApi.csproj": {}
   },
   "projects": {
-    "f:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\BusinessApi.csproj": {
+    "F:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\BusinessApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\BusinessApi.csproj",
+        "projectUniqueName": "F:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\BusinessApi.csproj",
         "projectName": "BusinessApi",
-        "projectPath": "f:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\BusinessApi.csproj",
+        "projectPath": "F:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\BusinessApi.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "f:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\obj\\",
+        "outputPath": "F:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

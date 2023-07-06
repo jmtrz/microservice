@@ -8,7 +8,7 @@ public class InventoryProfile : Profile
 {
     public InventoryProfile()
     {
-        CreateMap<Product, ProductDTO>();
+        CreateMap<Product, ProductReadDTO>();
         CreateMap<ProductCreateDTO, Product>();
         
         CreateMap<InventoryItem, InventoryDTO>();

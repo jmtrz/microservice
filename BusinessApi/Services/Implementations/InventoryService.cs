@@ -1,7 +1,9 @@
+using System.Reflection.Metadata.Ecma335;
 using BusinessApi.Data;
 using BusinessApi.Dtos;
 using BusinessApi.Interfaces;
 using BusinessApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BusinessApi.Services.Implementations;
 
@@ -39,11 +41,12 @@ public class InventoryService : IInventory
         return _context.SaveChangesAsync();
     }
 
-    public Task<int> AddProduct(Product product)
+    public async Task<bool> AddProduct(Product product)
     {
-        if(product is null) throw new ArgumentNullException(nameof(product));
+        if(product is null) throw new ArgumentNullException(nameof(product));        
+        
         _context.Products?.Add(product);
-        return _context.SaveChangesAsync();
+        return await _context.SaveChangesAsync() > 0;      
     }
 
     #endregion
@@ -120,15 +123,9 @@ public class InventoryService : IInventory
         return _context.Orders?.ToList() ?? new List<Order>();
     }
 
-    public Product GetProductById(string id)
-    {
-        return _context.Products?.Find(id) ?? new Product();
-    }
+    public async Task<Product> GetProductById(string id) => await _context.Products.FindAsync(id) ?? new Product();    
 
-    public IEnumerable<Product> GetProducts()
-    {
-        return _context.Products?.ToList() ?? new List<Product>();
-    }
+    public async Task<IEnumerable<Product>> GetProducts() => await _context.Products.ToListAsync();
 
     #endregion
 
@@ -179,20 +176,31 @@ public class InventoryService : IInventory
         return Task.FromResult(0);
     }
 
-    public Task<int> UpdateProduct(Product product)
+    public async Task<Product> UpdateProduct(Product product)
     {
-        var existingProduct = _context.Products?.Find(product.Id);
-        if(existingProduct != null)
+        try
         {
-            existingProduct.Name = product.Name;
-            existingProduct.Description = product.Description;
-            existingProduct.SKU = product.SKU;
-            existingProduct.UpdatedAt = product.UpdatedAt;
+            var existingProduct =  _context.Products?.Find(product.Id);
+            if(existingProduct != null)
+            {
+                existingProduct.Name = product.Name;
+                existingProduct.Description = product.Description;
+                existingProduct.SKU = product.SKU;
+                existingProduct.UpdatedAt = product.UpdatedAt;
 
-            return Task.FromResult(_context.SaveChanges());
-        }
+                var response = await _context.SaveChangesAsync();
 
-        return Task.FromResult(0);
+                return existingProduct;                
+            }
+            else 
+            {
+                throw new KeyNotFoundException();                
+            }            
+        }   
+        catch (DbUpdateConcurrencyException) 
+        {
+            throw;
+        }                
     }
     
     #endregion

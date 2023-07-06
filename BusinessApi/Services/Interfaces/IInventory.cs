@@ -1,3 +1,4 @@
+using BusinessApi.Dtos;
 using BusinessApi.Models;
 
 namespace BusinessApi.Interfaces;
@@ -5,10 +6,10 @@ namespace BusinessApi.Interfaces;
 public interface IInventory
 {
     //Products
-    IEnumerable<Product> GetProducts();
-    Product GetProductById(string id);
-    Task<int> AddProduct(Product product);
-    Task<int> UpdateProduct(Product product);
+    Task<IEnumerable<Product>> GetProducts();
+    Task<Product> GetProductById(string id);
+    Task<bool> AddProduct(Product product);
+    Task<Product> UpdateProduct(Product product);
     Task<int> DeleteProduct(string id);
 
     //Inventory
