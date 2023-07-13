@@ -1,5 +1,6 @@
 using BusinessApi.Data;
 using BusinessApi.Interfaces;
+using BusinessApi.Middlware;
 using BusinessApi.Services.Implementations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +25,8 @@ builder.Services.AddDbContext<InventoryDbContext>(options =>
 // builder.Services.AddSqlite<InventoryDbContext>(builder.Configuration.GetConnectionString("InventoryDbConnection"));
 
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddTransient<GlobalExceptionHandlerMiddlware>();
 
 var app = builder.Build();
 

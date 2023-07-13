@@ -41,12 +41,13 @@ public class InventoryService : IInventory
         return _context.SaveChangesAsync();
     }
 
-    public async Task<bool> AddProduct(Product product)
+    public async Task<Product> AddProduct(Product product)
     {
         if(product is null) throw new ArgumentNullException(nameof(product));        
         
-        _context.Products?.Add(product);
-        return await _context.SaveChangesAsync() > 0;      
+        var result = _context.Products.Add(product);
+        await _context.SaveChangesAsync();      
+        return result.Entity;
     }
 
     #endregion

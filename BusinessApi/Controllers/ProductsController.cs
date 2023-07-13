@@ -27,31 +27,51 @@ namespace BusinessApi.Controllers
         [HttpGet("get-all")]
         public async Task<ActionResult<IEnumerable<ProductReadDTO>>> GetProducts() 
         {
-            var result = await _inventory.GetProducts();            
-            return Ok(_mapper.Map<IEnumerable<ProductReadDTO>>(result));
+            try
+            {
+                var result = await _inventory.GetProducts();
+                return Ok(_mapper.Map<IEnumerable<ProductReadDTO>>(result));
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+           
         }
 
         [HttpGet("get-by-id/{id}")]
         public async Task<ActionResult<ProductReadDTO>> GetProductsById([FromRoute] string id)
         {
-            var result = await _inventory.GetProductById(id);
-            return Ok(_mapper.Map<ProductReadDTO>(result));
+            try
+            {
+                var result = await _inventory.GetProductById(id);
+                return Ok(_mapper.Map<ProductReadDTO>(result));
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+            
         }
 
         [HttpPost("new-product")]
         public async Task<ActionResult<ProductReadDTO>> AddProducts([FromBody] ProductCreateDTO product)
-        {                        
-            if(product is null) return BadRequest();
-
-            var productModel = _mapper.Map<Product>(product);
-
-            if(await _inventory.GetProductById(productModel.Id) is not null)
+        {             
+            try
             {
-                return Conflict(new { message = "Data Already Exist", body = productModel});
-            }
+                if(product is null) return BadRequest();
 
-            var result = await _inventory.AddProduct(productModel);
-            return result ? Ok(productModel) : BadRequest( new { message = "nothing was saved" });            
+                var productModel = _mapper.Map<Product>(product);
+
+                await _inventory.AddProduct(productModel);
+                return Ok(productModel);  // : BadRequest( new { message = "nothing was saved" })
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }                       
         }
 
         [HttpPut("update-product/{id}")]

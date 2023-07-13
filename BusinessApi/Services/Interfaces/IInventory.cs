@@ -8,7 +8,7 @@ public interface IInventory
     //Products
     Task<IEnumerable<Product>> GetProducts();
     Task<Product> GetProductById(string id);
-    Task<bool> AddProduct(Product product);
+    Task<Product> AddProduct(Product product);
     Task<Product> UpdateProduct(Product product);
     Task<int> DeleteProduct(string id);
 
