@@ -4315,19 +4315,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Msi\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "f:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\BusinessApi.csproj",
+      "projectUniqueName": "D:\\Workspace\\AllAboutDotNet\\microservice\\BusinessApi\\BusinessApi.csproj",
       "projectName": "BusinessApi",
-      "projectPath": "f:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\BusinessApi.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "f:\\workspaces\\dotnet_projects\\microservice\\BusinessApi\\obj\\",
+      "projectPath": "D:\\Workspace\\AllAboutDotNet\\microservice\\BusinessApi\\BusinessApi.csproj",
+      "packagesPath": "C:\\Users\\Msi\\.nuget\\packages\\",
+      "outputPath": "D:\\Workspace\\AllAboutDotNet\\microservice\\BusinessApi\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Msi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

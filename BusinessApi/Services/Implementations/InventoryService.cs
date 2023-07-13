@@ -75,20 +75,17 @@ public class InventoryService : IInventory
 
     public Task<int> DeleteOrderItem(int id)
     {
-        var orderItem = _context.OrderItems?.Find(id);
-        if(orderItem is null)
-            throw new KeyNotFoundException();
-        
+        var orderItem = (_context.OrderItems?.Find(id)) ?? throw new KeyNotFoundException();
         _context.Remove(orderItem);
         return _context.SaveChangesAsync();
     }
 
-    public Task<int> DeleteProduct(string id)
+    public async Task<bool> DeleteProduct(string id)
     {
-        var product = (_context.Products?.Find(id)) ?? throw new KeyNotFoundException();      
-        if(product is not null)  _context.Remove(product);
-        
-        return product is not null ? Task.FromResult(_context.SaveChanges()) :  Task.FromResult(0);
+        var product = await _context.Products.FindAsync(id) ?? throw new KeyNotFoundException();
+        _context.Remove(product);
+        await _context.SaveChangesAsync();
+        return product is not null;
     }
 
     #endregion
@@ -124,7 +121,7 @@ public class InventoryService : IInventory
         return _context.Orders?.ToList() ?? new List<Order>();
     }
 
-    public async Task<Product> GetProductById(string id) => await _context.Products.FindAsync(id) ?? new Product();    
+    public async Task<Product> GetProductById(string id) => await _context.Products.FindAsync(id);    
 
     public async Task<IEnumerable<Product>> GetProducts() => await _context.Products.ToListAsync();
 

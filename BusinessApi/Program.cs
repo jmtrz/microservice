@@ -1,9 +1,8 @@
 using BusinessApi.Data;
+using BusinessApi.Extensions;
 using BusinessApi.Interfaces;
-using BusinessApi.Middlware;
 using BusinessApi.Services.Implementations;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +25,7 @@ builder.Services.AddDbContext<InventoryDbContext>(options =>
 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<GlobalExceptionHandlerMiddlware>();
+// builder.Services.AddTransient<GlobalExceptionHandlerMiddlware>();
 
 var app = builder.Build();
 
@@ -42,5 +41,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.AddGlobalErrorHandling();
 
 app.Run();

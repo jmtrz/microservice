@@ -1,23 +1,42 @@
 using System.Net;
-using System.Text.Json;
 using BusinessApi.Exceptions;
-using Microsoft.AspNetCore.Mvc;
+using NotImplementedException = BusinessApi.Exceptions.NotImplementedException;
 
 namespace BusinessApi.Middlware;
 
-public class GlobalExceptionHandlerMiddlware : IMiddleware
+public class GlobalExceptionHandlerMiddlware //: IMiddleware
 {
-    public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+
+    private readonly RequestDelegate _next;
+    public GlobalExceptionHandlerMiddlware(RequestDelegate next)
+    {
+        _next = next;
+    }
+    public async Task InvokeAsync(HttpContext context)
     {
         try
         {
-            await next(context);
+            await _next(context);
         }
         catch (System.Exception ex)
         {                      
             await HandleExceptionAsync(context, ex);
         }
     }
+
+    #region UseThisForStronglyTyped
+    // public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+    // {
+    //     try
+    //     {
+    //         await next(context);
+    //     }
+    //     catch (System.Exception ex)
+    //     {                      
+    //         await HandleExceptionAsync(context, ex);
+    //     }
+    // }
+    #endregion
 
     protected Task HandleExceptionAsync(HttpContext context, Exception ex)
     {
@@ -30,10 +49,15 @@ public class GlobalExceptionHandlerMiddlware : IMiddleware
     protected (HttpStatusCode code, string json) GenerateResponse(Exception ex)
         => ex switch
         {
-            CustomkeyNotFoundException
+            NotFoundException
             => (
-                CustomkeyNotFoundException.HTTPCODE,
-                CustomkeyNotFoundException.ProblemResultDetails(ex)
+                NotFoundException.HTTPCODE,
+                NotFoundException.ProblemResultDetails(ex)
+            ),
+            NotImplementedException
+            => (
+                NotImplementedException.HTTPCODE,
+                NotImplementedException.ProblemResultDetails(ex)
             ),
             _ => (
                 BadRequestException.HTTPCODE,

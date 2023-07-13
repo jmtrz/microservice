@@ -1,13 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
 using AutoMapper;
 using BusinessApi.Dtos;
+using BusinessApi.Exceptions;
 using BusinessApi.Interfaces;
 using BusinessApi.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using NotImplementedException = BusinessApi.Exceptions.NotImplementedException;
 
 namespace BusinessApi.Controllers
 {
@@ -32,9 +30,9 @@ namespace BusinessApi.Controllers
                 var result = await _inventory.GetProducts();
                 return Ok(_mapper.Map<IEnumerable<ProductReadDTO>>(result));
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                throw;
+                throw new BadRequestException(ex.Message);
             }
            
         }
@@ -44,33 +42,31 @@ namespace BusinessApi.Controllers
         {
             try
             {
-                var result = await _inventory.GetProductById(id);
+                var result = await _inventory.GetProductById(id) ?? throw new NotFoundException("Invalid ID Not Found");
                 return Ok(_mapper.Map<ProductReadDTO>(result));
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+                throw new BadRequestException(ex.Message);
             }
             
         }
 
-        [HttpPost("new-product")]
+        [HttpPost("new-entry")]
         public async Task<ActionResult<ProductReadDTO>> AddProducts([FromBody] ProductCreateDTO product)
         {             
             try
             {
-                if(product is null) return BadRequest();
+                if(product is null) throw new NotImplementedException("Invalid Body Content");
 
                 var productModel = _mapper.Map<Product>(product);
 
                 await _inventory.AddProduct(productModel);
-                return Ok(productModel);  // : BadRequest( new { message = "nothing was saved" })
+                return Ok(productModel); 
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                
-                throw;
+                throw new BadRequestException(ex.Message);
             }                       
         }
 
@@ -83,16 +79,43 @@ namespace BusinessApi.Controllers
                 var response = _inventory.UpdateProduct(product);                
                 return Ok(response);
             }
-            catch (Exception)
+            catch (Exception ex)
             {                
-                throw;
+                throw new BadRequestException(ex.Message);
             }                                  
         }
 
         [HttpDelete("delete-product/{id}")]
-        public ActionResult DeleteProduct([FromRoute] string id)
+        public async Task<ActionResult> DeleteProduct([FromRoute] string id)
         {
-            return Ok(_inventory.DeleteProduct(id)) ?? Ok("None");            
+            try
+            {
+                var result = await _inventory.DeleteProduct(id);
+                              
+                if (result)
+                {
+                    return Ok(
+                        new
+                        {
+                            details = $"Data has been Deleted for item:{id}",
+                            status = HttpStatusCode.OK
+                        });
+                }
+                else
+                {
+                    return NotFound(
+                        new
+                        {
+                            details = $"Product with id:{id} not found",
+                            status = HttpStatusCode.NotFound
+                        });
+                }  
+            }
+            catch (Exception ex)
+            {
+                throw new BadRequestException(ex.Message);
+            }
+                     
         }
     }
 }

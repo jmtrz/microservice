@@ -10,7 +10,7 @@ public interface IInventory
     Task<Product> GetProductById(string id);
     Task<Product> AddProduct(Product product);
     Task<Product> UpdateProduct(Product product);
-    Task<int> DeleteProduct(string id);
+    Task<bool> DeleteProduct(string id);
 
     //Inventory
     IEnumerable<InventoryItem> GetInventoryItems();
